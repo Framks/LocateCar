@@ -1,15 +1,33 @@
 package infra.repository;
 
+import infra.db.BancoDeDados;
+
+import java.util.Collections;
 import java.util.List;
 
-public interface RepositorioAbstrato<T> {
-    public void salva(T objeto);
+public abstract class RepositorioAbstrato<T> {
+    protected BancoDeDados bancoDeDados;
 
-    public void deletar(T objeto);
+    public RepositorioAbstrato(BancoDeDados bancoDeDados) {
+        this.bancoDeDados = bancoDeDados;
+    }
 
-    public List<T> buscar();
+    public void gravar (T objeto) throws Exception {
+        this.bancoDeDados.inserirObjeto(objeto);
+    }
 
-    public T buscarporId(Long id);
+    public List listar () {
+        List objetosPresentesNoBanco = this.bancoDeDados.buscarObjetosPorTipo(classeModelo());
+        return Collections.unmodifiableList(objetosPresentesNoBanco);
+    }
 
-    public void atualizar(T objeto);
+    public Boolean excluir (T objeto){
+        this.bancoDeDados.excluirObjeto(objeto);
+        return true;
+    }
+
+    protected abstract Class classeModelo ();
+
+    public abstract T buscarPorId (Long id);
+
 }
