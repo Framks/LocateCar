@@ -2,7 +2,7 @@ package models;
 
 import java.util.Objects;
 
-public class PessoaJuridica extends Cliente{
+public class PessoaJuridica extends Pessoa {
     private Long cnpj;
 
     public PessoaJuridica(String nome, String telefone, String endereco, Long identificacao){

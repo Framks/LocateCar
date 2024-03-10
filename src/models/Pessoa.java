@@ -1,14 +1,22 @@
 package models;
-
-abstract class Cliente{
+public abstract class Pessoa {
+    private Long id;
     private String nome;
     private String telefone;
     private String endereco;
 
-    public Cliente(String nome, String telefone, String endereco){
+    public Pessoa(String nome, String telefone, String endereco){
         this.endereco = endereco;
         this.telefone = telefone;
         this.nome = nome;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public abstract Long getIdentificao();
@@ -31,4 +39,6 @@ abstract class Cliente{
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
+
 }
