@@ -3,15 +3,37 @@ package models;
 import java.time.LocalDateTime;
 
 public class Aluguel {
+
+    private Long id;
     private LocalDateTime dataEmprestimo;
     private LocalDateTime dataDevolucao;
     private Veiculo veiculo;
-    private Cliente cliente;
+    private Pessoa pessoa;
 
-    public Aluguel(LocalDateTime dataEmprestimo,Veiculo veiculo, Cliente cliente){
-        this.cliente = cliente;
+    public Aluguel(){
+
+    }
+
+    public Aluguel(LocalDateTime dataEmprestimo,Veiculo veiculo, Pessoa pessoa){
+        this.pessoa = pessoa;
         this.dataEmprestimo = dataEmprestimo;
         this.veiculo = veiculo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public LocalDateTime getDataEmprestimo() {
@@ -38,11 +60,11 @@ public class Aluguel {
         this.veiculo = veiculo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Pessoa getCliente() {
+        return pessoa;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }
