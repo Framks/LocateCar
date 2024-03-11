@@ -9,7 +9,7 @@ public class ServicePessoa<T extends Pessoa> {
 
     private RepositorioPessoa<T> repositorioPessoa;
 
-    public ServicePessoa(RepositorioPessoa repositorioPessoa){
+    public ServicePessoa(RepositorioPessoa<T> repositorioPessoa){
         this.repositorioPessoa = repositorioPessoa;
     }
 
@@ -21,11 +21,15 @@ public class ServicePessoa<T extends Pessoa> {
     }
 
     public List<T> listar(){
-        return null;
+        return this.repositorioPessoa.listar();
     }
 
     public void excluir(T veiculo){
 
+    }
+
+    public T buscarPorNome(String nome){
+        return null;
     }
 
     public T buscarPorId(Long id){
