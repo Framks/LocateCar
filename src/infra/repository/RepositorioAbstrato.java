@@ -16,8 +16,8 @@ public abstract class RepositorioAbstrato<T> {
         this.bancoDeDados.inserirObjeto(objeto);
     }
 
-    public List listar () {
-        List objetosPresentesNoBanco = this.bancoDeDados.buscarObjetosPorTipo(classeModelo());
+    public List<T> listar () {
+        List<T> objetosPresentesNoBanco = (List<T>) this.bancoDeDados.buscarObjetosPorTipo(classeModelo());
         return Collections.unmodifiableList(objetosPresentesNoBanco);
     }
 
