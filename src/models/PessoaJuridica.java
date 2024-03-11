@@ -10,6 +10,10 @@ public class PessoaJuridica extends Pessoa {
         this.cnpj = identificacao;
     }
 
+    public PessoaJuridica() {
+        super();
+    }
+
     @Override
     public Long getIdentificao() {
         return this.cnpj;

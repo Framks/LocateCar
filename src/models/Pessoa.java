@@ -11,6 +11,10 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
+    public Pessoa() {
+
+    }
+
     public Long getId() {
         return id;
     }
