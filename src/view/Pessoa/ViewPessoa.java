@@ -10,8 +10,8 @@ import java.util.List;
 
 public class ViewPessoa {
 
-    private final ServicePessoa servPJ;
-    private final ServicePessoa servPF;
+    private final ServicePessoa<PessoaJuridica> servPJ;
+    private final ServicePessoa<PessoaFisica> servPF;
     private final EntradaVerificada entrada;
     private final ViewPessoaFisica viewPF;
     private final ViewPessoaJuridica viewPJ;
@@ -55,20 +55,18 @@ public class ViewPessoa {
 
     private void listar(){
         try{
-            List pessoasjuridicas = this.servPJ.listar();
+            List<PessoaJuridica> pessoasjuridicas = this.servPJ.listar();
             System.out.println("###     Pessoas Jurídica    ###");
             System.out.println("   CNPJ   |    Nome     |    Telefone   |     Endereço  ");
-            for (Object pessoa : pessoasjuridicas){
-                PessoaJuridica pj = (PessoaJuridica) pessoa;
+            for (PessoaJuridica pj : pessoasjuridicas){
                 System.out.println(pj.getIdentificao() + "  |  "+pj.getNome()+"  |  "+pj.getTelefone()+"  |  "+pj.getEndereco()
                 );
             }
             System.out.println("\n");
             System.out.println("###     Pessoas Físicas     ###");
-            List pessoasfisicas = this.servPF.listar();
+            List<PessoaFisica> pessoasfisicas = this.servPF.listar();
             System.out.println("   CPF   |    Nome     |    Telefone   |     Endereço  ");
-            for (Object o : pessoasfisicas){
-                PessoaFisica pessoa = (PessoaFisica) o;
+            for (PessoaFisica pessoa : pessoasfisicas){
                 System.out.println(pessoa.getIdentificao() + "  |  "+pessoa.getNome()+"  |  "+pessoa.getTelefone()+"  |  "+pessoa.getEndereco()
                 );
             }
