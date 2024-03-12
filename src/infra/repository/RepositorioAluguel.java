@@ -29,5 +29,10 @@ public class RepositorioAluguel extends RepositorioAbstrato<Aluguel>{
         return encontradoPorId;
     }
 
+    @Override
+    public void gravar(Aluguel obj) throws Exception {
+        obj.setId(this.bancoDeDados.proximoId());
+        this.bancoDeDados.inserirObjeto(obj);
+    }
 
 }

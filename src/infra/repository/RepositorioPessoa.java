@@ -1,7 +1,6 @@
 package infra.repository;
 
 import infra.db.BancoDeDados;
-import models.Aluguel;
 import models.Pessoa;
 import models.PessoaJuridica;
 
@@ -29,12 +28,6 @@ public class RepositorioPessoa<T extends Pessoa> extends RepositorioAbstrato<T> 
             }
         }
         return encontradoPorId;
-    }
-
-    @Override
-    public void gravar(T obj) throws Exception {
-        obj.setId(this.bancoDeDados.proximoId());
-        this.bancoDeDados.inserirObjeto(obj);
     }
 
 }

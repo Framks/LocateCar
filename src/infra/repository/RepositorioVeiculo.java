@@ -1,8 +1,6 @@
 package infra.repository;
 
 import infra.db.BancoDeDados;
-import models.Aluguel;
-import models.PessoaJuridica;
 import models.Veiculo;
 
 import java.util.List;
