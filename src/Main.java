@@ -17,7 +17,6 @@ public class Main {
         RepositorioVeiculo<VeiculoPequeno> repoVeiPeq = new RepositorioVeiculo<>(bancoDeDados);
         RepositorioVeiculo<VeiculoSuv> repoVeiSuv = new RepositorioVeiculo<>(bancoDeDados);
         RepositorioAluguel repoAlu = new RepositorioAluguel(bancoDeDados);
-
         ServicePessoa<PessoaFisica> servPF = new ServicePessoa<>(repoPF);
         ServicePessoa<PessoaJuridica> servPJ = new ServicePessoa<>(repoPJ);
         ServiceVeiculo<VeiculoPequeno> servVeiPeq = new ServiceVeiculo<>(repoVeiPeq);
@@ -33,8 +32,6 @@ public class Main {
                 servPJ,
                 servAlu
         );
-
         menuprincipal.run();
-
     }
 }

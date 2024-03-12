@@ -1,11 +1,13 @@
 package view.Pessoa;
 
+import models.Pessoa;
 import models.PessoaFisica;
 import models.PessoaJuridica;
 import services.ServicePessoa;
 
 import view.EntradaVerificada;
 
+import javax.sound.midi.Soundbank;
 import java.util.List;
 
 public class ViewPessoa {
@@ -50,7 +52,27 @@ public class ViewPessoa {
     }
 
     private void buscarPorNome(){
-
+        try {
+            System.out.println("Digite o nome ou parte dele: ");
+            String nome = this.entrada.receberString();
+            Pessoa pessoa = this.servPF.buscarPorNome(nome);
+            if (pessoa == null) {
+                pessoa = this.servPJ.buscarPorNome(nome);
+            }
+            if (pessoa == null){
+                System.out.println("Não existe pessoa com esse nome: "+nome);
+            }else{
+                String print = "";
+                if (pessoa instanceof PessoaFisica){
+                    print += "CPF: ";
+                }else {
+                    print += "CNPJ: ";
+                }
+                System.out.println(print+pessoa.getIdentificao()+", Nome: "+pessoa.getNome()+", Telefone: "+pessoa.getTelefone()+", Endereço: "+pessoa.getEndereco());
+            }
+        }catch (Exception e){
+            System.out.println("Não foi possível Buscar");
+        }
     }
 
     private void listar(){
@@ -104,7 +126,7 @@ public class ViewPessoa {
                 this.viewPJ.alterar(cnpj);
             }
         }catch (Exception e){
-
+            System.out.println("Ocorreu um erro não foi possível alterar o cliente");
         }
     }
 }
