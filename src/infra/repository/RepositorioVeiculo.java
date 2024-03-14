@@ -31,7 +31,7 @@ public class RepositorioVeiculo<T extends Veiculo> extends  RepositorioAbstrato<
     }
 
     @Override
-    public void gravar(T obj) throws Exception {
+    public void gravar(T obj) throws RuntimeException {
         obj.setId(this.bancoDeDados.proximoId());
         this.bancoDeDados.inserirObjeto(obj);
     }
