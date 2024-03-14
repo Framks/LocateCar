@@ -7,6 +7,8 @@ public class Veiculo {
     private String modelo;
     private Integer anoFabricacao;
 
+    private Boolean ocupado;
+
     public Veiculo(){
 
     }
@@ -16,6 +18,15 @@ public class Veiculo {
         this.marca = marca;
         this.modelo = modelo;
         this.anoFabricacao = anoFabricacao;
+        this.ocupado = false;
+    }
+
+    public Boolean getOcupado() {
+        return ocupado;
+    }
+
+    public void setOcupado(Boolean ocupado) {
+        this.ocupado = ocupado;
     }
 
     public Long getId() {

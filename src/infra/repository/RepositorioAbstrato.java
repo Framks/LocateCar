@@ -12,7 +12,7 @@ public abstract class RepositorioAbstrato<T> {
         this.bancoDeDados = bancoDeDados;
     }
 
-    public void gravar (T objeto) throws Exception {
+    public void gravar (T objeto) throws RuntimeException {
         this.bancoDeDados.inserirObjeto(objeto);
     }
 

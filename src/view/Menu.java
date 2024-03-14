@@ -22,6 +22,10 @@ public class Menu {
     private final ServicePessoa servPJ;
     private final EntradaVerificada entrada;
     private final ServiceAluguel servAlu;
+    private final ViewPessoa viewPessoa;
+    private final ViewAluguel viewAluguel;
+
+    private final ViewVeiculo viewVeiculo;
 
     public Menu(ServiceVeiculo<? extends Veiculo> servVeiPeq,
                 ServiceVeiculo<? extends Veiculo> servVeiMed,
@@ -36,6 +40,9 @@ public class Menu {
         this.servPJ = servPJ;
         this.entrada = new EntradaVerificada(new Scanner(System.in));
         this.servAlu = servAlu;
+        this.viewVeiculo = new ViewVeiculo(servVeiPeq,servVeiMed,servVeiSuv,entrada);
+        this.viewPessoa = new ViewPessoa(servPF,servPJ,entrada);
+        this.viewAluguel = new ViewAluguel(servAlu,entrada,viewPessoa,viewVeiculo);
     }
 
     public void run(){
@@ -52,9 +59,9 @@ public class Menu {
             option = this.entrada.receberInteger();
             switch (option){
                 case 0-> execucao = false;
-                case 1 -> new ViewAluguel(servAlu,entrada).run();
-                case 2 -> new ViewPessoa(servPF,servPJ,entrada).run();
-                case 3 -> new ViewVeiculo(servVeiPeq,servVeiMed,servVeiSuv,entrada).run();
+                case 1 -> this.viewAluguel.run();
+                case 2 -> this.viewPessoa.run();
+                case 3 -> this.viewVeiculo.run();
                 default -> System.out.println("entrada não correspondente a opções");
             }
         }
