@@ -30,7 +30,7 @@ public class RepositorioAluguel extends RepositorioAbstrato<Aluguel>{
     }
 
     @Override
-    public void gravar(Aluguel obj) throws Exception {
+    public void gravar(Aluguel obj) throws RuntimeException {
         obj.setId(this.bancoDeDados.proximoId());
         this.bancoDeDados.inserirObjeto(obj);
     }
