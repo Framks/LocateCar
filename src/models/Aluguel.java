@@ -59,12 +59,4 @@ public class Aluguel {
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
-
-    public Pessoa getCliente() {
-        return pessoa;
-    }
-
-    public void setCliente(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
 }

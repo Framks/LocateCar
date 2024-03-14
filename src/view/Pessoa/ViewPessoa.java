@@ -75,7 +75,7 @@ public class ViewPessoa {
         }
     }
 
-    private void listar(){
+    public void listar(){
         try{
             List<PessoaJuridica> pessoasjuridicas = this.servPJ.listar();
             System.out.println("###     Pessoas Jurídica    ###");
@@ -128,5 +128,18 @@ public class ViewPessoa {
         }catch (Exception e){
             System.out.println("Ocorreu um erro não foi possível alterar o cliente");
         }
+    }
+
+    public Pessoa getPessoa(String identificao){
+        List<PessoaJuridica> pessoaJuridicas = this.servPJ.listar();
+        List<PessoaFisica> pessoaFisicas = this.servPF.listar();
+
+        for (PessoaJuridica p : pessoaJuridicas)
+            if (p.getIdentificao().equals(identificao))
+                return p;
+        for (PessoaFisica p: pessoaFisicas)
+            if (p.getIdentificao().equals(identificao))
+                return p;
+        return null;
     }
 }
