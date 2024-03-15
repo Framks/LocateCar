@@ -64,4 +64,14 @@ public class ServiceVeiculo<T extends Veiculo> {
         throw new RuntimeException("Veiculo não encontrado");
     }
 
+    public T buscarPorNome(String nome){
+        if (nome == null)
+            throw new RuntimeException("Modelo nulo");
+        List<T> lista = this.repositorioVeiculo.listar();
+        for (T veiculo : lista){
+            if (veiculo.getModelo().contains(nome))
+                return veiculo;
+        }
+        return null;
+    }
 }
