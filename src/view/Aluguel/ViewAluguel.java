@@ -55,7 +55,7 @@ public class ViewAluguel {
 
             this.viewPessoa.listar();
             System.out.println("digite o cpf ou cnpj que deseja alugar o carro: ");
-            Pessoa pessoa = this.viewPessoa.getPessoa(this.entrada.receberString());
+            Pessoa pessoa = this.viewPessoa.getPessoa(this.entrada.receberLong());
 
             System.out.println("Qual a data de Aluguel: ");
             Aluguel aluguel = new Aluguel(this.entrada.receberLocalData(), veiculo, pessoa);
