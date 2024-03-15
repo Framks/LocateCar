@@ -8,6 +8,7 @@ import view.EntradaVerificada;
 import view.Pessoa.ViewPessoa;
 import view.Veiculo.ViewVeiculo;
 
+import java.util.List;
 
 
 public class ViewAluguel {
@@ -78,7 +79,18 @@ public class ViewAluguel {
     }
 
     private void listar(){
-
+        List<Aluguel> lista = this.serviceAluguel.listar();
+        System.out.println("##   Alugueis  ##");
+        for (Aluguel aluguel : lista){
+            System.out.print("Veiculo de placa: "+aluguel.getVeiculo().getPlaca()+
+                    ", Alugado para:  "+aluguel.getPessoa().getNome()+
+                    ", na data de: "+aluguel.getDataEmprestimo().toString());
+            if (aluguel.getDataDevolucao() != null){
+                System.out.println(", e devolução: "+aluguel.getDataDevolucao().toString());
+            }else{
+                System.out.println(" ");
+            }
+        }
     }
 
 

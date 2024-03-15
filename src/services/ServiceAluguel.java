@@ -14,7 +14,7 @@ public class ServiceAluguel {
         this.repositorioAluguel = repositorioAluguel;
     }
 
-    public void cadastrar(Aluguel aluguel) throws Exception{
+    public void cadastrar(Aluguel aluguel) throws RuntimeException{
         if (aluguel == null)
             throw new RuntimeException("Aluguel não pode ser nulo");
         if(aluguel.getPessoa() == null)
@@ -25,6 +25,7 @@ public class ServiceAluguel {
             throw  new RuntimeException("Para alugar tem que ter uma data de emprestimo");
         if (aluguel.getVeiculo().getOcupado())
             throw new RuntimeException("Carro ja esta ocupado");
+        aluguel.getVeiculo().setOcupado(true);
         this.repositorioAluguel.gravar(aluguel);
     }
 
@@ -87,6 +88,7 @@ public class ServiceAluguel {
     public Double devolucao(Aluguel aluguel){
         if (aluguel == null)
             throw new RuntimeException("Aluguel nulo");
+        aluguel.getVeiculo().setOcupado(false);
         return calcularValorDevolucao(aluguel);
     }
 }
