@@ -6,7 +6,6 @@ public class Veiculo {
     private String marca;
     private String modelo;
     private Integer anoFabricacao;
-
     private Boolean ocupado;
 
     public Veiculo(){
