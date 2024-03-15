@@ -11,11 +11,11 @@ import view.Menu;
 public class Main {
     public static void main(String[] args) {
         BancoDeDados bancoDeDados = new BancoDeDados();
-        RepositorioPessoa<PessoaFisica> repoPF = new RepositorioPessoa<>(bancoDeDados);
-        RepositorioPessoa<PessoaJuridica> repoPJ = new RepositorioPessoa<>(bancoDeDados);
-        RepositorioVeiculo<VeiculoMedio> repoVeiMedio = new RepositorioVeiculo<>(bancoDeDados);
-        RepositorioVeiculo<VeiculoPequeno> repoVeiPeq = new RepositorioVeiculo<>(bancoDeDados);
-        RepositorioVeiculo<VeiculoSuv> repoVeiSuv = new RepositorioVeiculo<>(bancoDeDados);
+        RepositorioPessoa<PessoaFisica> repoPF = new RepositorioPessoa<>(bancoDeDados,PessoaFisica.class);
+        RepositorioPessoa<PessoaJuridica> repoPJ = new RepositorioPessoa<>(bancoDeDados, PessoaJuridica.class);
+        RepositorioVeiculo<VeiculoMedio> repoVeiMedio = new RepositorioVeiculo<>(bancoDeDados, VeiculoMedio.class);
+        RepositorioVeiculo<VeiculoPequeno> repoVeiPeq = new RepositorioVeiculo<>(bancoDeDados, VeiculoPequeno.class);
+        RepositorioVeiculo<VeiculoSuv> repoVeiSuv = new RepositorioVeiculo<>(bancoDeDados, VeiculoSuv.class);
         RepositorioAluguel repoAlu = new RepositorioAluguel(bancoDeDados);
         ServicePessoa<PessoaFisica> servPF = new ServicePessoa<>(repoPF);
         ServicePessoa<PessoaJuridica> servPJ = new ServicePessoa<>(repoPJ);
