@@ -3,6 +3,7 @@ package services;
 import infra.repository.RepositorioAluguel;
 import models.*;
 
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -82,7 +83,7 @@ public class ServiceAluguel {
             if(diferecaDataDia >=3)
                 valorTotal*=0.90;
         }
-        return null;
+        return valorTotal;
     }
 
     public Double devolucao(Aluguel aluguel){
