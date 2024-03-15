@@ -43,6 +43,7 @@ public class ViewVeiculo {
         }
     }
 
+    // consertar cadastrar com placa duplicada. esta dando erro
     public void cadastrar(){
         try {
             System.out.println("Digite a placa do carro: ");
@@ -55,7 +56,9 @@ public class ViewVeiculo {
             Integer anoFabricacao = entrada.receberInteger();
             System.out.println("selecione o tipo de carro SUV(1), carro pequeno(2) ou carro medio(3): ");
             Integer tipo = entrada.receberInteger();
-            Veiculo veiculo;
+            Veiculo veiculo = this.getVeiculo(placa);
+            if (veiculo != null)
+                throw new RuntimeException("placa ja cadastrada");
             if (tipo == 1){
                 veiculo = new VeiculoSuv(modelo,marca,placa,anoFabricacao);
                 this.servVeiSuv.cadastrar(veiculo);
