@@ -26,7 +26,7 @@ public abstract class RepositorioAbstrato<T> {
         return true;
     }
 
-    protected abstract Class classeModelo ();
+    protected abstract Class<T> classeModelo ();
 
     public abstract T buscarPorId (Long id);
 

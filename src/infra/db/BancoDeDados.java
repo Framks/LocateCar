@@ -22,6 +22,8 @@ public class BancoDeDados {
         return new ArrayList(objetos);
     }
 
+    // busca um set de objetos do tipo clas no hashmap
+    // retorna esse hashmap
     private Set colecaoDeObjetos(Class clas) {
         Set objetos = (Set) BancoDeDados.OBJETOS.get(clas);
         if (objetos == null) {

@@ -8,13 +8,16 @@ import java.util.List;
 
 public class RepositorioPessoa<T extends Pessoa> extends RepositorioAbstrato<T> {
 
-    public RepositorioPessoa(BancoDeDados bancoDeDados) {
+    private final Class<T> tipoClass;
+
+    public RepositorioPessoa(BancoDeDados bancoDeDados, Class<T> tipoClass) {
         super(bancoDeDados);
+        this.tipoClass = tipoClass;
     }
 
     @Override
     protected Class classeModelo() {
-        return PessoaJuridica.class;
+        return Pessoa.class;
     }
 
     @Override

@@ -7,14 +7,16 @@ import java.util.List;
 
 public class RepositorioVeiculo<T extends Veiculo> extends  RepositorioAbstrato<T>{
 
-    public RepositorioVeiculo(BancoDeDados bd){
+    private final Class<T> tipoClass;
+
+    public RepositorioVeiculo(BancoDeDados bd, Class<T> tipoClass){
         super(bd);
+        this.tipoClass = tipoClass;
     }
 
     @Override
-    protected Class classeModelo() {
-        T obj =null;
-        return obj.getClass();
+    protected Class<T> classeModelo() {
+        return this.tipoClass;
     }
 
     @Override
