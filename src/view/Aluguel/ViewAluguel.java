@@ -8,6 +8,7 @@ import view.EntradaVerificada;
 import view.Pessoa.ViewPessoa;
 import view.Veiculo.ViewVeiculo;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -71,10 +72,12 @@ public class ViewAluguel {
             System.out.print("Digite a placa do carro: ");
             Veiculo veiculo = this.viewVeiculo.getVeiculo(this.entrada.receberString());
             Aluguel aluguel = this.serviceAluguel.buscarPorVeiculo(veiculo);
+            // com isso eu digo que ele quer dervolver no momento que ele chamar a função
+            aluguel.setDataDevolucao(LocalDateTime.now());
             Double valorAlugue = this.serviceAluguel.devolucao(aluguel);
             System.out.println("O valor do aluguel é: "+valorAlugue);
         }catch (Exception e){
-            System.out.println("Não foi possível alugar + "+e.getMessage());
+            System.out.println("Não foi possível Devolver + "+e.getMessage());
         }
     }
 
