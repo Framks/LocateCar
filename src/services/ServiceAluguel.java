@@ -57,7 +57,7 @@ public class ServiceAluguel {
     private Double calcularValorDevolucao(Aluguel aluguel){
         if (aluguel == null)
             throw new RuntimeException("aluguel nulo");
-        if(aluguel.getDataDevolucao() != null)
+        if(aluguel.getDataDevolucao() == null)
             throw new RuntimeException("Para calcular a devolução é necessario ter data de devolução");
         if(aluguel.getVeiculo() == null)
             throw new RuntimeException("Veiculo nulo");
@@ -72,14 +72,18 @@ public class ServiceAluguel {
             valorDiaria = 150;
         }
 
+        // aqui nós pegamos a diferença de dias
         long diferencaDataMinutos = ChronoUnit.DAYS.between(aluguel.getDataDevolucao(),aluguel.getDataEmprestimo());
         long diferecaDataDia = diferencaDataMinutos/(24*60);
 
+        // aqui faz o calculo do valor total dos dias
         Double valorTotal = (double) (valorDiaria * ((diferecaDataDia <= 1)? 1: diferecaDataDia));
+        // aqui faz calculo do desconto
         if(aluguel.getPessoa() instanceof PessoaFisica){
             if (diferecaDataDia >= 5)
                 valorTotal*=0.95;
-        }else if(aluguel.getPessoa() instanceof PessoaJuridica){
+        }
+        else if(aluguel.getPessoa() instanceof PessoaJuridica){
             if(diferecaDataDia >=3)
                 valorTotal*=0.90;
         }
@@ -89,7 +93,8 @@ public class ServiceAluguel {
     public Double devolucao(Aluguel aluguel){
         if (aluguel == null)
             throw new RuntimeException("Aluguel nulo");
+        Double valor = calcularValorDevolucao(aluguel);
         aluguel.getVeiculo().setOcupado(false);
-        return calcularValorDevolucao(aluguel);
+        return valor;
     }
 }
