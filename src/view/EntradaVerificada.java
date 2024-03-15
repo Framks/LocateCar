@@ -48,7 +48,9 @@ public class EntradaVerificada {
 
     public Long receberLong(){
         try {
-            return this.scan.nextLong();
+            Long leitura = this.scan.nextLong();
+            this.scan.nextLine();
+            return leitura;
         }catch (Exception e){
             System.out.println("Formato invalido");
             System.out.print("Digite novamente: ");
