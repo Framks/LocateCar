@@ -28,13 +28,14 @@ public class ViewPessoa {
         Integer option;
         boolean execucao = true;
         while (execucao){
-            System.out.print("##    Clientes    ##\n" +
-                            "    0 - Sair: \n" +
-                            "    1 - Cadastrar: \n" +
-                            "    2 - Alterar: \n" +
-                            "    3 - Buscar por nome: \n" +
-                            "    4 - Listar Todos: \n"+
-                    "Digite a opção para entrar: ");
+            System.out.print("""
+                    ##    Clientes    ##
+                        0 - Sair:\s
+                        1 - Cadastrar:\s
+                        2 - Alterar:\s
+                        3 - Buscar por nome:\s
+                        4 - Listar Todos:\s
+                    Digite a opção para entrar:\s""");
             option = this.entrada.receberInteger();
             switch (option){
                 case 0-> execucao = false;
