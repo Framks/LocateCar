@@ -143,11 +143,8 @@ public class ViewPessoa {
         try{
             listar();
             System.out.println("digite o cpf ou o cnpj da pessoa que deseja alterar: ");
-            Integer opt = entrada.receberInteger();
-            if (opt == 1){
-                System.out.println("digite o cpf da pessoa que deseja alterar: ");
-                Long cpf = this.entrada.receberLong();
-                PessoaFisica pessoa = this.service.buscarPorId(cpf);
+            Pessoa pessoa = getPessoa(entrada.receberLong());
+            if (pessoa instanceof PessoaFisica){
                 PessoaFisica newPessoa = new PessoaFisica();
                 System.out.println("Nome: "+pessoa.getNome());
                 System.out.print("Vc deseja Mudar o nome, se sim(1) ou não(2): ");
@@ -169,11 +166,9 @@ public class ViewPessoa {
                     newPessoa.setEndereco(this.entrada.receberString());
                 }
                 newPessoa.setIdentificao(pessoa.getIdentificao());
-                this.service.alterar(newPessoa);
-            } else if (opt == 2) {
-                System.out.println("digite o cnpj da pessoa que deseja alterar: ");
-                Long cnpj = this.entrada.receberLong();
-                PessoaJuridica pessoa = this.service.buscarPorId(cnpj);
+                this.servPF.alterar(newPessoa);
+            }
+            else if (pessoa instanceof PessoaJuridica) {
                 PessoaJuridica newPessoa = new PessoaJuridica();
                 System.out.println("Razão social: "+pessoa.getNome());
 
@@ -199,7 +194,7 @@ public class ViewPessoa {
                 }
 
                 newPessoa.setIdentificao(pessoa.getIdentificao());
-                this.service.alterar(newPessoa);
+                this.servPJ.alterar(newPessoa);
             }
         }catch (Exception e){
             System.out.println("Ocorreu um erro não foi possível alterar o cliente");
