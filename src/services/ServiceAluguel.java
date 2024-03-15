@@ -73,19 +73,19 @@ public class ServiceAluguel {
         }
 
         // aqui nós pegamos a diferença de dias
-        long diferencaDataMinutos = ChronoUnit.DAYS.between(aluguel.getDataDevolucao(),aluguel.getDataEmprestimo());
-        long diferecaDataDia = diferencaDataMinutos/(24*60);
+        long diferencaDataMinutos = ChronoUnit.MINUTES.between(aluguel.getDataEmprestimo(),aluguel.getDataDevolucao());
+        long diferecaDataDia = (diferencaDataMinutos/(24*60) + (((diferencaDataMinutos%(24*60)) > 0 ) ? 1: 0));
 
         // aqui faz o calculo do valor total dos dias
-        Double valorTotal = (double) (valorDiaria * ((diferecaDataDia <= 1)? 1: diferecaDataDia));
+        Double valorTotal = (double) (valorDiaria * diferecaDataDia);
         // aqui faz calculo do desconto
         if(aluguel.getPessoa() instanceof PessoaFisica){
             if (diferecaDataDia >= 5)
-                valorTotal*=0.95;
+                valorTotal= valorTotal*0.95;
         }
         else if(aluguel.getPessoa() instanceof PessoaJuridica){
             if(diferecaDataDia >=3)
-                valorTotal*=0.90;
+                valorTotal = valorTotal*0.90;
         }
         return valorTotal;
     }
