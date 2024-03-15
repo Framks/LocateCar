@@ -16,8 +16,8 @@ public class RepositorioPessoa<T extends Pessoa> extends RepositorioAbstrato<T> 
     }
 
     @Override
-    protected Class classeModelo() {
-        return Pessoa.class;
+    protected Class<T> classeModelo() {
+        return tipoClass;
     }
 
     @Override
