@@ -54,7 +54,7 @@ public class ServicePessoa<T extends Pessoa> {
             throw new RuntimeException("Nome esta nulo");
         List<T> lista = this.repositorioPessoa.listar();
         for (T pessoa : lista){
-            if (pessoa.getNome().equals(nome))
+            if (pessoa.getNome().contains(nome))
                 return pessoa;
         }
         return null;
