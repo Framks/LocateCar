@@ -5,9 +5,9 @@ import java.util.*;
 public class BancoDeDados {
 
     private static final HashMap OBJETOS = new HashMap();
-    private Long id;
+    private Long id = 0L;
 
-    public void inserirObjeto(Object objeto) throws Exception {
+    public void inserirObjeto(Object objeto) throws RuntimeException {
         Set objetos = colecaoDeObjetos(objeto.getClass());
         objetos.add(objeto);
     }
